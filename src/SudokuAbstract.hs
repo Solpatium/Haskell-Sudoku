@@ -80,10 +80,10 @@ valKnown board index = isKnown $ element board index
 possibilities :: (SudokuBoard b, SudokuSquare s, SudokuValue v) => b (s v) -> Index2D -> [v]
 possibilities board (x,y) = filter condition getAll
                             where
+                              groupIndex = (x `div` 3) + (y `div` 3)*3
                               group = getGroup board groupIndex
                               column = getColumn board x
-                              row = getRow board y
-                              groupIndex = (x `quot` 3) + (y `quot` 3)*3
+                              row = getRow board y                              
                               condition e = notIn row && notIn column && notIn group
                                 where
                                   notIn = notElem e
