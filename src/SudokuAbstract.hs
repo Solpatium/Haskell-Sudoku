@@ -83,7 +83,7 @@ possibilities board (x,y) = filter condition getAll
                               groupIndex = (x `div` 3) + (y `div` 3)*3
                               group = getGroup board groupIndex
                               column = getColumn board x
-                              row = getRow board y                              
+                              row = getRow board y
                               condition e = notIn row && notIn column && notIn group
                                 where
                                   notIn = notElem e
@@ -95,8 +95,8 @@ readDigits string = map readChar $ filter (\c -> elem c ['0'..'9']) string
 
 -- |Takes a string and returns a filled board
 readBoard string = if isValid board
-                   then board
-                   else error "Invalid board"
+                   then Just board
+                   else Nothing
                    where board = fromIntList.readDigits $ string
 
 -- |Checks if board is valid

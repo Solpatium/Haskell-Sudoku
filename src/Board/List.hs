@@ -32,7 +32,7 @@ instance (SudokuSquare s, SudokuValue v) => Show (ListBoard (s v)) where
 instance SudokuBoard ListBoard where
   replace   (ListBoard list) index2d value = ListBoard $ replaceAtIndex (squareIndex index2d) value list
   element   (ListBoard list) index2d = list !! (squareIndex index2d)
-  getRow    (ListBoard list) index = squaresValues $ takeIfIndex (\i -> index*9<=i && i<=index*9+9) list
+  getRow    (ListBoard list) index = squaresValues $ takeIfIndex (\i -> index*9<=i && i<index*9+9) list
   getColumn (ListBoard list) index = squaresValues $ takeIfIndex (\i -> i `mod` 9 == index) list
   getGroup  (ListBoard list) index = squaresValues $ takeIfIndex condition list
                                       where topCorner = (index `mod` 3)*3+(index `quot` 3)*3*9
