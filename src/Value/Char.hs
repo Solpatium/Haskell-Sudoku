@@ -1,3 +1,5 @@
+{-# LANGUAGE DeriveGeneric, DeriveAnyClass #-}
+
 module Value.Char (
   CharValue,
     fromInt,
@@ -5,9 +7,11 @@ module Value.Char (
 ) where
 
 import SudokuAbstract
+import GHC.Generics (Generic)
+import Control.DeepSeq
 
 newtype CharValue = CharValue Char
-                   deriving (Show, Eq)
+                   deriving (Show, Eq, Generic, NFData)
 
 instance SudokuValue CharValue where
   fromInt 1 = CharValue '1'

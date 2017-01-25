@@ -1,6 +1,6 @@
 module Main where
 
-import Sudoku
+import Benchmarks
 
 main :: IO ()
 main = benchmarks

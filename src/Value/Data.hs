@@ -1,3 +1,5 @@
+{-# LANGUAGE DeriveGeneric, DeriveAnyClass #-}
+
 module Value.Data (
   DataValue,
     fromInt,
@@ -6,9 +8,11 @@ module Value.Data (
 ) where
 
 import SudokuAbstract
+import GHC.Generics (Generic)
+import Control.DeepSeq
 
 data DataValue = One | Two | Three | Four | Five | Six | Seven | Eight | Nine
-                 deriving Eq
+                 deriving (Eq, Generic, NFData)
 
 instance Show DataValue where
   show One = "1"

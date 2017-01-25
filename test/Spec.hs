@@ -92,4 +92,3 @@ main = do
   quickCheckResult testVectorColumn
   putStrLn "HUnit"
   runTestTT $ TestList [testSolving, testProjectEuler, testReader]
-  -- print testListRow "123456789"

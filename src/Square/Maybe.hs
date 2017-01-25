@@ -6,6 +6,8 @@ module Square.Maybe (
 
 import SudokuAbstract
 import Data.Maybe
+import GHC.Generics (Generic)
+import Control.DeepSeq
 
 -- |MaybeSquare is just an alias of maybe.
 -- It is created to check if Maybe is somehow faster than a "custom Maybe" - SimpleSquare.

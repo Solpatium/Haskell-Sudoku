@@ -1,15 +1,19 @@
+{-# LANGUAGE DeriveGeneric, DeriveAnyClass #-}
+
 module Board.Vector (
   VectorBoard
 ) where
 
 import SudokuAbstract
 import Data.Vector
+import GHC.Generics (Generic)
+import Control.DeepSeq
 
 squareIndex :: Index2D -> Int
 squareIndex (x,y) = y*9+x
 
 -- |VectorBoard is just a wrapped vector. It should be faster than ListBoard, because random access is O(1).
-newtype VectorBoard square = VectorBoard (Vector square)
+newtype VectorBoard square = VectorBoard (Vector square) deriving (Eq, Generic, NFData)
 
 getByIndexes vec [] = []
 getByIndexes vec (i:xs) = (vec ! i) : (getByIndexes vec xs)

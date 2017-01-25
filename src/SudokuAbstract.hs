@@ -1,5 +1,7 @@
 {-#LANGUAGE KindSignatures #-}
-
+{-
+  |Contains declarations of all sudoku classes and helper functions.
+-}
 module SudokuAbstract (
     Index,
     Index2D,

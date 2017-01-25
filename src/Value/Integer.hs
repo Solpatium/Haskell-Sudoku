@@ -1,3 +1,5 @@
+{-# LANGUAGE DeriveGeneric, DeriveAnyClass #-}
+
 module Value.Integer (
   IntegerValue,
     fromInt,
@@ -5,9 +7,11 @@ module Value.Integer (
 ) where
 
 import SudokuAbstract
+import GHC.Generics (Generic)
+import Control.DeepSeq
 
 newtype IntegerValue = IntegerValue Integer
-                   deriving (Show, Eq)
+                   deriving (Show, Eq, Generic, NFData)
 
 instance SudokuValue IntegerValue where
   fromInt 1 = IntegerValue 1

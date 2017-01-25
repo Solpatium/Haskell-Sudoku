@@ -1,4 +1,4 @@
-{-# LANGUAGE FlexibleInstances #-} -- This is needed to create custom instance of Show for ListBoard
+{-# LANGUAGE DeriveGeneric, DeriveAnyClass, FlexibleInstances #-} -- This is needed to create custom instance of Show for ListBoard
 
 module Board.List (
   ListBoard
@@ -7,6 +7,8 @@ module Board.List (
 import Data.Maybe
 import Data.List
 import SudokuAbstract
+import GHC.Generics (Generic)
+import Control.DeepSeq
 
 -- |Helper function, Takes a Index2D and returns index in list
 squareIndex :: Index2D -> Int
@@ -19,7 +21,7 @@ replaceAtIndex n item ls = a ++ (item:b) where (a, (_:b)) = splitAt n ls
 takeIfIndex f list = foldl' (\acc (v,i) -> if f i then v:acc else acc) [] $ zip list [0..80]
 
 -- |ListBoard is just a wrapped list
-newtype ListBoard square = ListBoard [square]
+newtype ListBoard square = ListBoard [square] deriving (Eq, Generic, NFData)
 
 instance (SudokuSquare s, SudokuValue v) => Show (ListBoard (s v)) where
   show (ListBoard list) = loop list
