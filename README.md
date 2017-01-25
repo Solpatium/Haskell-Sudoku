@@ -9,7 +9,7 @@ cd Haskell-Sudoku
 stack build
 stack exec sudoku-exe # This launches all benchmarks and can take a few minutes :)
 ```
-**Warning: ** benchmarks might not work on Windows, there issues with file coding. Anything else should work on Windows.
+**Warning:** benchmarks might not work on Windows, there are issues with file coding. Anything else should work on Windows.
 #### Generating documentation:
 ```bash
 stack haddock
