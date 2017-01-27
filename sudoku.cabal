@@ -5,7 +5,7 @@ description:         Please see README.md
 homepage:            https://github.com/Solpatium/Haskell-Sudoku
 license:             BSD3
 license-file:        LICENSE
-author:              Jakub Ptak, Paweł Urban
+author:              Jakub Ptak, Wiesław Stanek
 copyright:           2017 Author name here
 category:            Web
 build-type:          Simple
